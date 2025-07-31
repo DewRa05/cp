@@ -2,35 +2,40 @@
 
 import { useState } from "react";
 import Image from "next/image";
+import { FaLaptopCode, FaCreditCard, FaKaaba, FaQrcode } from "react-icons/fa";
 
 const servicesData = [
   {
     id: "software",
     title: "Software Development",
-    description:
-      "Kami menyediakan solusi pengembangan software custom sesuai kebutuhan bisnis Anda dengan teknologi terbaru.",
+    description: "Solusi software custom untuk mendukung efisiensi dan inovasi bisnis Anda.",
+    features: ["Aplikasi Web & Mobile", "Sistem Otomasi Bisnis", "Integrasi API"],
     image: "/image/service/Software Development.svg",
+    icon: <FaLaptopCode />,
   },
   {
     id: "digital",
     title: "Digital Payment",
-    description:
-      "Sistem pembayaran digital yang aman, cepat, dan efisien untuk menunjang kebutuhan transaksi Anda.",
+    description: "Sistem pembayaran digital cepat, aman, dan terintegrasi.",
+    features: ["E-Wallet & QRIS", "Payment Gateway", "Keamanan Enkripsi"],
     image: "/image/service/Digital Payment_1.svg",
+    icon: <FaCreditCard />,
   },
   {
     id: "online",
     title: "Online Ticketing",
-    description:
-      "Platform pemesanan tiket online yang memudahkan pengguna dengan sistem cepat dan terintegrasi.",
+    description: "Platform pemesanan tiket online yang praktis dan terhubung.",
+    features: ["Tiket Event & Travel", "Notifikasi Real-time", "Integrasi Multi-Channel"],
     image: "/image/service/Online Ticekting.svg",
+    icon: <FaQrcode />,
   },
   {
     id: "umra",
     title: "Umrah & Hajj Apps",
-    description:
-      "Aplikasi untuk kebutuhan perjalanan Umrah & Haji yang praktis dan mudah digunakan.",
+    description: "Aplikasi perjalanan Umrah & Haji yang mudah digunakan.",
+    features: ["Panduan Ibadah", "Tracking Jamaah", "Jadwal & Itinerary"],
     image: "/image/service/Umrah HAJJ.svg",
+    icon: <FaKaaba />,
   },
 ];
 
@@ -38,63 +43,58 @@ const Services = () => {
   const [selectedService, setSelectedService] = useState(servicesData[0]);
 
   return (
-    <section
-      id="services"
-      className="min-h-screen flex items-center justify-center px-6 py-16 bg-white"
-    >
-      <div className="w-full max-w-6xl mx-auto">
-        {/* Heading */}
-        <div className="mb-12 text-center">
-          <h2 className="text-[#01B3BF] text-3xl font-medium mb-2">Our Services</h2>
-          <p className="text-gray-600 text-sm font-medium">
-            Innovative Technology Solutions For Your Business
-          </p>
+    <section id="services" className="min-h-screen flex flex-col items-center justify-center px-6 py-16 bg-white">
+      {/* Judul Tengah */}
+      <div className="mb-12 text-center">
+        <h2 className="text-[#01B3BF] text-3xl font-semibold mb-2">Our Services</h2>
+        <div className="w-16 h-[3px] bg-[#01B3BF] mx-auto mb-3 rounded-full"></div>
+        <p className="text-gray-600 text-sm">Innovative Technology Solutions For Your Business</p>
+      </div>
+
+      {/* Konten */}
+      <div className="w-full max-w-6xl flex flex-col lg:flex-row gap-10 items-start">
+        {/* Kolom Kiri: Gambar */}
+        <div className="w-full lg:w-1/2 flex justify-center">
+          <Image
+            src={selectedService.image}
+            alt={selectedService.title}
+            width={340}
+            height={340}
+            className="object-contain drop-shadow-md hover:scale-105 transition-transform duration-300"
+          />
         </div>
 
-        {/* Content */}
-        <div className="flex flex-col lg:flex-row gap-4">
-          {/* Left Menu */}
-          <div className="flex flex-col gap-4 w-full lg:w-1/3 max-h-64 overflow-y-auto pr-2 custom-scroll">
+        {/* Kolom Kanan */}
+        <div className="w-full lg:w-1/2">
+          {/* Icon Navigasi di atas Judul */}
+          <div className="flex justify-start gap-4 mb-6">
             {servicesData.map((service) => (
               <button
                 key={service.id}
                 onClick={() => setSelectedService(service)}
-                className={`service-btn py-3 rounded-xl shadow text-left pl-5 block cursor-pointer font-medium transition 
-                ${
+                className={`w-12 h-12 flex items-center justify-center rounded-full transition shadow-md cursor-pointer text-lg ${
                   selectedService.id === service.id
-                    ? "bg-cyan-600 text-white"
-                    : "bg-cyan-50 text-cyan-600 hover:bg-cyan-100"
+                    ? "bg-[#01B3BF] text-white scale-110"
+                    : "bg-gray-100 text-gray-400 hover:bg-[#e0f8f9] hover:text-[#01B3BF]"
                 }`}
               >
-                {service.title}
+                {service.icon}
               </button>
             ))}
           </div>
 
-          {/* Right Content (Dynamic) */}
-          <div className="w-full lg:w-2/3">
-            <div className="flex flex-col lg:flex-row items-center justify-between gap-6">
-              {/* Image */}
-              <div className="w-full lg:w-1/2 flex justify-center">
-                <Image
-                  src={selectedService.image}
-                  alt={selectedService.title}
-                  width={300}
-                  height={300}
-                  className="service-img w-[300px] max-w-full"
-                />
-              </div>
-              {/* Description Box */}
-              <div className="w-full lg:w-1/2 bg-[#14b4e2] text-white p-6 rounded-xl shadow-md min-h-[220px] flex flex-col justify-center">
-                <h4 className="service-title text-white font-semibold text-lg mb-2">
-                  {selectedService.title}
-                </h4>
-                <p className="service-desc text-sm leading-relaxed min-h-[80px]">
-                  {selectedService.description}
-                </p>
-              </div>
-            </div>
-          </div>
+          {/* Judul & Deskripsi */}
+          <h3 className="text-2xl font-semibold text-gray-800 mb-3">{selectedService.title}</h3>
+          <p className="text-sm text-gray-600 leading-relaxed max-w-md">{selectedService.description}</p>
+
+          {/* List Fitur */}
+          <ul className="mt-4 space-y-2 text-sm text-gray-500">
+            {selectedService.features.map((feat, idx) => (
+              <li key={idx} className="flex items-center gap-2">
+                <span className="w-2 h-2 bg-[#01B3BF] rounded-full"></span> {feat}
+              </li>
+            ))}
+          </ul>
         </div>
       </div>
     </section>

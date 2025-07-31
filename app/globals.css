@@ -1,1 +1,14 @@
 @import "tailwindcss";
+
+body {
+  font-family: 'Roboto', sans-serif;
+}
+
+html,
+body {
+  overflow-x: hidden;
+}
+
+html {
+  scroll-behavior: smooth;
+}

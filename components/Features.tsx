@@ -4,7 +4,7 @@ const Features = () => {
   return (
     <section
       id="features"
-      className="h-[80vh] flex flex-col-reverse md:flex-row items-center justify-between bg-gradient-to-t from-[#F0F0F0] to-[#F5F5F5] px-4 py-16 md:py-24 gap-10 md:gap-0"
+      className="h-[90vh] flex flex-col-reverse md:flex-row items-center justify-between bg-gradient-to-t from-[#F0F0F0] to-[#F5F5F5] px-4 py-16 md:py-24 gap-10 md:gap-0"
     >
       {/* Left Content */}
       <div className="w-full md:w-1/2 flex flex-col items-center md:items-end text-center md:text-right">
