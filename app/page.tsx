@@ -8,7 +8,7 @@ import Hero from "@/components/Hero";
 import Philosophy from "@/components/Philosophy";
 import Portfolio from "@/components/Portofolio";
 import ServicesData from "@/components/ServicesData";
-import Team from "@/components/Team";
+import Reviews from "@/components/Reviews";
 import AOS from "aos";
 import "aos/dist/aos.css";
 import { useEffect } from "react";
@@ -28,7 +28,7 @@ export default function Home() {
       <ServicesData />
       <Clients />
       <Portfolio />
-      <Team />
+      <Reviews />
       <Contact />
     </main>
   );

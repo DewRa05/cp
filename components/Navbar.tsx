@@ -57,7 +57,7 @@ const Navbar = () => {
     };
   }, []);
 
-  const menuItems = ["Home", "About", "Services", "Portfolio", "Team", "Contact"];
+  const menuItems = ["Home", "About", "Services", "Portfolio", "Review", "Contact"];
 
   return (
     <div className="px-8">

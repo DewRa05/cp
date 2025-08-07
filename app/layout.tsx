@@ -12,7 +12,7 @@ const sectionOrder = [
   "features",
   "services",
   "portfolio",
-  "team",
+  "review",
   "contact",
   "footer",
 ];
