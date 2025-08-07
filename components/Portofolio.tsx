@@ -7,7 +7,7 @@ type LogoItem = {
   image: string;
   logo: string;
   title: string;
-  description: string; // ✅ Tambahkan properti deskripsi
+  description: string;
 };
 
 const logos: LogoItem[] = [
@@ -153,44 +153,47 @@ const Portfolio = () => {
 
   return (
     <section id="portfolio" className="lg:min-h-screen bg-white px-6 py-16">
-      <div className="max-w-6xl mx-auto flex flex-col md:flex-row items-center md:items-start justify-between gap-10 relative">
+      <div className="max-w-6xl mx-auto flex flex-col md:flex-row items-center justify-center text-center gap-10 relative" data-aos="fade-up">
+
         {/* LEFT: Main Image */}
-        <div className="w-full md:w-1/2 flex flex-col items-center md:items-start relative text-center md:text-left">
+        <div className="w-full md:w-1/2 flex flex-col items-center md:items-start relative text-center md:text-left min-h-[450px]" data-aos="fade-right" data-aos-delay="200">
           <div className="absolute top-0 left-0 w-full h-full bg-[url('/image/grid.svg')] opacity-10 z-0"></div>
           <h2 className="text-3xl md:text-4xl font-semibold text-cyan-600 mb-6 z-10">
             Our Portfolio
           </h2>
-          {selected && (
-            <Image
-              src={selected.image}
-              alt={selected.title}
-              width={500}
-              height={500}
-              className="mx-auto w-72 sm:w-80 md:w-[22rem] lg:w-[26rem] transition-all duration-300 rounded-2xl object-contain z-10"
-            />
-          )}
+          <div className="flex-1 flex items-center justify-center min-h-[300px] w-full">
+            {selected && (
+              <Image
+                src={selected.image}
+                alt={selected.title}
+                width={500}
+                height={500}
+                className="mx-auto w-72 sm:w-80 md:w-[22rem] lg:w-[26rem] transition-all duration-300 rounded-2xl object-contain z-10"
+                data-aos="zoom-in"
+                data-aos-delay="300"
+              />
+            )}
+          </div>
         </div>
 
         {/* RIGHT: Tabs & Logos */}
-        <div className="w-full md:w-1/2 flex flex-col z-5">
+        <div className="w-full md:w-1/2 flex flex-col z-5 min-h-[450px] justify-between" data-aos="fade-left" data-aos-delay="400">
           {/* Tabs */}
           <div className="flex gap-6 border-b border-gray-200 mb-4 justify-center md:justify-start">
             <button
-              className={`text-lg md:text-xl pb-1 transition ${
-                activeTab === "aplikasi"
+              className={`text-lg md:text-xl pb-1 transition ${activeTab === "aplikasi"
                   ? "text-cyan-600 font-semibold border-b-2 border-cyan-600"
                   : "text-gray-400 hover:text-cyan-600"
-              }`}
+                }`}
               onClick={() => setActiveTab("aplikasi")}
             >
               Aplikasi
             </button>
             <button
-              className={`text-lg md:text-xl pb-1 transition ${
-                activeTab === "website"
+              className={`text-lg md:text-xl pb-1 transition ${activeTab === "website"
                   ? "text-cyan-600 font-semibold border-b-2 border-cyan-600"
                   : "text-gray-400 hover:text-cyan-600"
-              }`}
+                }`}
               onClick={() => setActiveTab("website")}
             >
               Website
@@ -198,15 +201,14 @@ const Portfolio = () => {
           </div>
 
           {/* Logo Grid */}
-          <div className="grid grid-cols-3 sm:grid-cols-4 gap-3 justify-items-center md:justify-items-start mb-6">
+          <div className="grid grid-cols-3 sm:grid-cols-4 gap-3 justify-items-center md:justify-items-start mb-6" data-aos="fade-up" data-aos-delay="500">
             {logos
               .filter((logo) => logo.category === activeTab)
               .map((logo, index) => (
                 <button
                   key={index}
-                  className={`change-image ${
-                    selected?.image === logo.image ? "active-logo" : ""
-                  }`}
+                  className={`change-image ${selected?.image === logo.image ? "active-logo" : ""
+                    }`}
                   onClick={() => setSelected(logo)}
                 >
                   <Image
@@ -220,38 +222,47 @@ const Portfolio = () => {
               ))}
           </div>
 
-          {/* ✅ Dynamic Description */}
-          {selected && (
-            <>
-              <h3 className="text-cyan-600 text-lg md:text-xl font-semibold mb-1">
-                {selected.title}
-              </h3>
-              <p className="text-gray-600 text-sm leading-relaxed max-w-lg text-center md:text-left">
-                {selected.description}
-              </p>
-            </>
-          )}
+          {/* Description */}
+          <div className="min-h-[100px]" data-aos="fade-up" data-aos-delay="600">
+            {selected && (
+              <>
+                <h3 className="text-cyan-600 text-lg md:text-xl font-semibold mb-1 text-start">
+                  {selected.title}
+                </h3>
+                <p className="text-gray-600 text-sm leading-relaxed max-w-lg  md:text-left">
+                  {selected.description}
+                </p>
+              </>
+            )}
+          </div>
         </div>
       </div>
 
       {/* Glow Effect */}
       <style jsx>{`
-        @keyframes pulseGlow {
-          0%,
-          100% {
-            box-shadow: 0 2px 4px rgba(81, 226, 192, 0.8),
-              0 0 0 1px rgba(162, 255, 233, 0.15);
-          }
-          50% {
-            box-shadow: 0 3px 6px rgba(81, 226, 192, 0.12),
-              0 0 0 2px rgba(162, 255, 233, 0.2);
-          }
+      @keyframes pulseGlow {
+        0%,
+        100% {
+          box-shadow: 0 0 0 0 rgba(81, 226, 192, 0.8),
+            0 0 15px 6px rgba(81, 226, 192, 0.3);
         }
-        .active-logo img {
-          transform: scale(1.03);
-          animation: pulseGlow 2s infinite ease-in-out;
+        50% {
+          box-shadow: 0 0 0 2px rgba(81, 226, 192, 0.6),
+            0 0 25px 10px rgba(81, 226, 192, 0.5);
         }
-      `}</style>
+      }
+
+      .active-logo {
+  background: white;
+  border-radius: 1.5rem;
+  box-shadow:
+    0 0 10px rgba(147, 197, 253, 0.3),
+    0 0 20px rgba(147, 197, 253, 0.4);
+  padding: 0.5px 3px;
+  transition: box-shadow 0.3s ease;
+}
+
+    `}</style>
     </section>
   );
 };

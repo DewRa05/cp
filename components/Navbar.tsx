@@ -7,7 +7,6 @@ const Navbar = () => {
   const [menuOpen, setMenuOpen] = useState(false);
   const [activeSection, setActiveSection] = useState("home");
 
-  // Tambahkan useRef untuk menu dan tombol
   const menuRef = useRef<HTMLUListElement | null>(null);
   const buttonRef = useRef<HTMLButtonElement | null>(null);
 

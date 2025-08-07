@@ -45,29 +45,29 @@ const Services = () => {
   return (
     <section id="services" className="min-h-screen flex flex-col items-center justify-center px-6 py-16 bg-white">
       {/* Judul Tengah */}
-      <div className="mb-12 text-center">
+      <div className="mb-12 text-center" data-aos="fade-up" data-aos-delay="200">
         <h2 className="text-[#01B3BF] text-3xl font-semibold mb-2">Our Services</h2>
         <div className="w-16 h-[3px] bg-[#01B3BF] mx-auto mb-3 rounded-full"></div>
         <p className="text-gray-600 text-sm">Innovative Technology Solutions For Your Business</p>
       </div>
 
       {/* Konten */}
-      <div className="w-full max-w-6xl flex flex-col lg:flex-row gap-10 items-start">
+      <div className="w-full max-w-6xl flex flex-col md:flex-row gap-10 items-center lg:items-start">
         {/* Kolom Kiri: Gambar */}
-        <div className="w-full lg:w-1/2 flex justify-center">
+        <div className="w-full lg:w-1/2 flex justify-center" data-aos="fade-right" data-aos-delay="300">
           <Image
             src={selectedService.image}
             alt={selectedService.title}
             width={340}
             height={340}
-            className="object-contain drop-shadow-md hover:scale-105 transition-transform duration-300"
+            className="object-contain drop-shadow-md hover:scale-105 transition-transform duration-300 max-w-full h-auto"
           />
         </div>
 
         {/* Kolom Kanan */}
-        <div className="w-full lg:w-1/2">
-          {/* Icon Navigasi di atas Judul */}
-          <div className="flex justify-start gap-4 mb-6">
+        <div className="w-full lg:w-1/2 text-center lg:text-left" data-aos="fade-left" data-aos-delay="400">
+          {/* Icon Navigasi */}
+          <div className="flex mb:justify-center justify-center lg:justify-start gap-4 mb-6 flex-wrap">
             {servicesData.map((service) => (
               <button
                 key={service.id}
@@ -83,14 +83,14 @@ const Services = () => {
             ))}
           </div>
 
-          {/* Judul & Deskripsi */}
-          <h3 className="text-2xl font-semibold text-gray-800 mb-3">{selectedService.title}</h3>
-          <p className="text-sm text-gray-600 leading-relaxed max-w-md">{selectedService.description}</p>
+          <h3 className="text-2xl font-semibold text-gray-800 mb-3 md:text-start">{selectedService.title}</h3>
+          <p className="text-sm text-gray-600 leading-relaxed max-w-md mx-auto lg:mx-0 md:text-start" data-aos="fade-up" data-aos-delay="550">
+            {selectedService.description}
+          </p>
 
-          {/* List Fitur */}
-          <ul className="mt-4 space-y-2 text-sm text-gray-500">
+          <ul className="mt-4 space-y-2 text-sm text-gray-500" data-aos="fade-up" data-aos-delay="600">
             {selectedService.features.map((feat, idx) => (
-              <li key={idx} className="flex items-center gap-2">
+              <li key={idx} className="flex items-center gap-2 justify-center md:justify-start">
                 <span className="w-2 h-2 bg-[#01B3BF] rounded-full"></span> {feat}
               </li>
             ))}

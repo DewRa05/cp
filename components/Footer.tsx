@@ -3,10 +3,10 @@ import Link from "next/link";
 
 const Footer = () => {
   return (
-    <footer className="bg-gradient-to-b from-[#FFFFFF] to-[#E6F2FA] py-12 px-6">
-      <div className="max-w-6xl mx-auto flex flex-col md:flex-row justify-between items-center">
+    <footer id="footer" className="bg-gradient-to-b from-[#FFFFFF] to-[#E6F2FA] py-12 px-6">
+      <div className="max-w-6xl mx-auto flex flex-col md:flex-row justify-between items-center" data-aos="fade-up" data-aos-delay="100">
         {/* Logo & Description */}
-        <div className="text-center md:text-left space-y-4">
+        <div className="text-center md:text-left space-y-4" data-aos="fade-right" data-aos-delay="200">
           <Link href="#">
             <Image
               src="/image/footer/metech.png"
@@ -27,15 +27,15 @@ const Footer = () => {
             Follow Us
           </h3>
           <div className="flex justify-center md:justify-end space-x-4">
-            <Link href="#">
+            <a href="https://m.facebook.com/MilenialEliteTeknologi/">
               <Image src="/image/footer/fb.png" alt="Facebook" width={28} height={28} className="hover:scale-110 transition" />
-            </Link>
-            <Link href="#">
+            </a>
+            <a href="https://www.instagram.com/metech.id?igsh=cjI4dnVzcDAwcmlo">
               <Image src="/image/footer/ig.png" alt="Instagram" width={28} height={28} className="hover:scale-110 transition" />
-            </Link>
-            <Link href="#">
+            </a>
+            <a  href="https://www.aedin.com/company/metechid/">
               <Image src="/image/footer/linkdin.png" alt="LinkedIn" width={28} height={28} className="hover:scale-110 transition" />
-            </Link>
+            </a>
           </div>
         </div>
       </div>

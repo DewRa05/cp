@@ -24,9 +24,9 @@ const Team = () => {
       id="team"
       className="min-h-screen bg-white flex items-center justify-center py-12 px-4"
     >
-      <div className="bg-cyan-50 rounded-3xl w-full max-w-6xl p-10 text-center shadow-md">
-        <h2 className="text-3xl font-bold text-cyan-600 mb-2">Our Team</h2>
-        <p className="text-base text-gray-600 mb-10">
+      <div className="bg-cyan-50 rounded-3xl w-full max-w-6xl p-10 text-center shadow-md" data-aos="fade-up" data-aos-delay="100">
+        <h2 className="text-3xl font-bold text-cyan-600 mb-2" data-aos="fade-up" data-aos-delay="200">Our Team</h2>
+        <p className="text-base text-gray-600 mb-10" data-aos="fade-up" data-aos-delay="300">
           Menyediakan platform yang berkualitas, komitmen dan terjamin.
         </p>
 
@@ -35,6 +35,8 @@ const Team = () => {
             <div
               key={index}
               className="relative bg-white shadow-md rounded-xl min-w-[240px] h-[90px] flex items-center pl-20 pr-6"
+              data-aos="zoom-in"
+              data-aos-delay={`${400 + index * 150}`}
             >
               <div className="absolute left-[-26px] w-[110px] h-[110px] bg-cyan-400 rounded-full border-4 border-white flex items-center justify-center shadow-lg">
                 <Image
