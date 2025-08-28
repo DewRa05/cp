@@ -1,7 +1,9 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Image from "next/image";
+import AOS from "aos";
+import "aos/dist/aos.css";
 import { FaLaptopCode, FaCreditCard, FaKaaba, FaQrcode } from "react-icons/fa";
 
 const servicesData = [
@@ -22,14 +24,14 @@ const servicesData = [
     icon: <FaCreditCard />,
   },
   {
-  id: "online",
-  title: "Online Ticketing",
-  description: "Platform pemesanan tiket online yang praktis dan terhubung.",
-  features: ["Tiket Event & Travel", "Notifikasi Real-time", "Integrasi Multi-Channel"],
-  image: "/image/service/Online Ticekting.svg",
-  icon: <FaQrcode />,
-  link: "https://digimovekreatif.com/", // <--- hanya ini yang pakai link
-},
+    id: "online",
+    title: "Online Ticketing",
+    description: "Platform pemesanan tiket online yang praktis dan terhubung.",
+    features: ["Tiket Event & Travel", "Notifikasi Real-time", "Integrasi Multi-Channel"],
+    image: "/image/service/Online Ticekting.svg",
+    icon: <FaQrcode />,
+    link: "https://digimovekreatif.com/", // <--- hanya ini yang pakai link
+  },
   {
     id: "umra",
     title: "Umrah & Hajj Apps",
@@ -43,19 +45,30 @@ const servicesData = [
 const Services = () => {
   const [selectedService, setSelectedService] = useState(servicesData[0]);
 
+  useEffect(() => {
+    AOS.init({ duration: 1000, once: true });
+  }, []);
+
   return (
-    <section id="services" className="min-h-screen flex flex-col items-center justify-center px-6 py-16 bg-white">
+    <section
+      id="services"
+      className="min-h-screen flex flex-col items-center justify-center px-6 py-16 bg-white"
+      data-aos="fade-up"
+    >
       {/* Judul Tengah */}
-      <div className="mb-12 text-center">
+      <div className="mb-12 text-center" data-aos="fade-down">
         <h2 className="text-[#01B3BF] text-3xl font-semibold mb-2">Our Services</h2>
         <div className="w-16 h-[3px] bg-[#01B3BF] mx-auto mb-3 rounded-full"></div>
         <p className="text-gray-600 text-sm">Innovative Technology Solutions For Your Business</p>
       </div>
 
       {/* Konten */}
-      <div className="w-full max-w-6xl flex flex-col md:flex-row gap-10 items-center lg:items-start">
+      <div
+        className="w-full max-w-6xl flex flex-col md:flex-row gap-10 items-center lg:items-start"
+        data-aos="zoom-in"
+      >
         {/* Kolom Kiri: Gambar */}
-        <div className="w-full lg:w-1/2 flex justify-center">
+        <div className="w-full lg:w-1/2 flex justify-center" data-aos="fade-right">
           <Image
             src={selectedService.image}
             alt={selectedService.title}
@@ -66,7 +79,7 @@ const Services = () => {
         </div>
 
         {/* Kolom Kanan */}
-        <div className="w-full lg:w-1/2 text-center lg:text-left">
+        <div className="w-full lg:w-1/2 text-center lg:text-left" data-aos="fade-left">
           {/* Icon Navigasi */}
           <div className="flex mb:justify-center justify-center lg:justify-start gap-4 mb-6 flex-wrap">
             {servicesData.map((service) => (
@@ -78,6 +91,7 @@ const Services = () => {
                     ? "bg-[#01B3BF] text-white scale-110"
                     : "bg-gray-100 text-gray-400 hover:bg-[#e0f8f9] hover:text-[#01B3BF]"
                 }`}
+                data-aos="zoom-in"
               >
                 {service.icon}
               </button>
@@ -97,17 +111,18 @@ const Services = () => {
             ))}
           </ul>
           {selectedService.id === "online" && (
-  <div className="mt-6 flex justify-center md:justify-start">
-    <a
-      href={selectedService.link}
-      target="_blank"
-      rel="noopener noreferrer"
-      className="bg-[#01B3BF] hover:bg-[#0198a6] text-white font-semibold py-2 px-5 rounded-lg shadow transition duration-300"
-    >
-      Kunjungi Platform
-    </a>
-  </div>
-)}
+            <div className="mt-6 flex justify-center md:justify-start">
+              <a
+                href={selectedService.link}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="bg-[#01B3BF] hover:bg-[#0198a6] text-white font-semibold py-2 px-5 rounded-lg shadow transition duration-300"
+                data-aos="fade-up"
+              >
+                Kunjungi Platform
+              </a>
+            </div>
+          )}
         </div>
       </div>
     </section>
