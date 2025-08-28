@@ -77,7 +77,7 @@ const logos: LogoItem[] = [
   },
   {
     category: "aplikasi",
-    image: "/image/portfolio/app/Warung-Dekat.png",
+    image: "/image/aw/13.png",
     logo: "/image/client/Warung dekat.png",
     title: "Warung Dekat",
     description:
@@ -86,58 +86,71 @@ const logos: LogoItem[] = [
 
   // WEBSITE
   {
-    category: "website",
-    image: "/image/aw/4.png",
-    logo: "/image/client/suzuki.png",
-    title: "Suzuki Web",
-    description:
-      "Website resmi Suzuki dengan katalog mobil, promo terbaru, dan layanan purna jual.",
-  },
-  {
-    category: "website",
-    image: "/image/aw/7.png",
-    logo: "/image/client/Arnes.png",
-    title: "Arnes Web",
-    description:
-      "Website pemesanan tiket Arnes Shuttle dengan tampilan modern.",
-  },
-  {
-    category: "website",
-    image: "/image/aw.3.png",
-    logo: "/image/client/pasteur.png",
-    title: "Pasteur Web",
-    description: "Website resmi Pasteur Trans untuk pemesanan tiket shuttle.",
-  },
-  {
-    category: "website",
-    image: "/image/aw/10.png",
-    logo: "/image/client/9kita.png",
-    title: "Real Travel Web",
-    description:
-      "Website untuk pemesanan paket perjalanan dan wisata Real Travel.",
-  },
-  {
-    category: "website",
-    image: "/image/aw/5.png",
-    logo: "/image/client/9kita.png",
-    title: "Skota Super",
-    description: "Website layanan terpadu untuk kebutuhan kota pintar.",
-  },
-  {
-    category: "website",
-    image: "/image/aw/5.png",
-    logo: "/image/client/9kita.png",
-    title: "Suksesku",
-    description:
-      "Platform online untuk mendukung UKM mengembangkan bisnis mereka.",
-  },
-  {
-    category: "website",
-    image: "/image/5.png",
-    logo: "/image/client/9kita.png",
-    title: "The Tanis",
-    description: "Website hotel The Tanis dengan fitur pemesanan kamar online.",
-  },
+  category: "website",
+  image: "/image/aw/4.png",
+  logo: "/image/client/suzuki.png",
+  title: "Suzuki Web",
+  description:
+    "Website resmi Suzuki dengan katalog mobil, promo terbaru, dan layanan purna jual.",
+},
+{
+  category: "website",
+  image: "/image/aw/7.png",
+  logo: "/image/client/Arnes.png",
+  title: "Arnes Web",
+  description:
+    "Website pemesanan tiket travel Arnes Shuttle dengan sistem reservasi online.",
+},
+{
+  category: "website",
+  image: "/image/aw/3.png",
+  logo: "/image/client/pasteur.png",
+  title: "Pasteur Web",
+  description: "Website resmi Pasteur Trans untuk pemesanan tiket shuttle online.",
+},
+{
+  category: "website",
+  image: "/image/aw/6.png",
+  logo: "/image/client/hot job.png",
+  title: "Hot Job",
+  description:
+    "Portal lowongan kerja dengan informasi karier terbaru dan fitur aplikasi online.",
+},
+{
+  category: "website",
+  image: "/image/aw/1.png",
+  logo: "/image/client/Piknik aja.png",
+  title: "Piknik Aja",
+  description: "Website layanan perjalanan dan wisata dengan berbagai pilihan paket liburan.",
+},
+{
+  category: "website",
+  image: "/image/aw/10.png",
+  logo: "/image/client/Real Travel.png",
+  title: "Real Travel",
+  description: "Website pemesanan tiket dan paket wisata Real Travel.",
+},
+{
+  category: "website",
+  image: "/image/aw/5.png",
+  logo: "/image/client/Skota.png",
+  title: "Skota",
+  description: "Website layanan terpadu untuk kebutuhan smart city (kota pintar).",
+},
+{
+  category: "website",
+  image: "/image/aw/9.png",
+  logo: "/image/client/Tanis.png",
+  title: "The Tanis",
+  description: "Website hotel The Tanis dengan fitur reservasi kamar online.",
+},
+{
+  category: "website",
+  image: "/image/aw/8.png",
+  logo: "/image/client/Usaha Yuk.png",
+  title: "Usaha Yuk",
+  description: "Platform digital untuk mendukung pelaku usaha mengembangkan bisnis.",
+},
 ];
 
 const Portfolio = () => {

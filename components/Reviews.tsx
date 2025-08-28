@@ -1,7 +1,7 @@
 "use client";
 import { useEffect, useRef, useState } from "react";
 import Image from "next/image";
-import { FaChevronLeft, FaChevronRight } from "react-icons/fa";
+import { FaChevronLeft, FaChevronRight, FaStar } from "react-icons/fa";
 
 const reviews = [
   {
@@ -9,30 +9,35 @@ const reviews = [
     role: "CEO, Themeland",
     avatar: "/image/review/pp.jpg",
     text: "Layanan mereka sangat cepat dan responsif. Timnya juga komunikatif dan membantu kami dari awal hingga akhir. Sangat direkomendasikan!",
+    rating: 5,
   },
   {
     name: "Anna Salsabila",
     role: "Founder, Themeland",
     avatar: "/image/review/pp.jpg",
     text: "Hasil desain websitenya sesuai harapan kami — modern, responsif, dan mudah digunakan. Kami sangat puas",
+    rating: 4,
   },
   {
     name: "Dedi Saputra",
     role: "CEO, Themeland",
     avatar: "/image/review/pp.jpg",
     text: "Sistem yang dibangun benar-benar memudahkan operasional kami. Proses inventaris sekarang jauh lebih efisien.",
+    rating: 5,
   },
   {
     name: "Nurul Aini",
     role: "CTO, CreativeLab",
     avatar: "/image/review/pp.jpg",
     text: "Terima kasih timnya! Sekarang bisnis kecil saya punya website sendiri dan terlihat lebih profesional di mata pelanggan.",
+    rating: 4,
   },
   {
     name: "Ali Raza",
     role: "CMO, InnovateX",
     avatar: "/image/review/pp.jpg",
     text: "Cepat, tepat, dan hasilnya luar biasa!",
+    rating: 5,
   },
 ];
 
@@ -41,16 +46,14 @@ const ReviewSlider = () => {
   const [isTransitioning, setIsTransitioning] = useState(false);
 
   const totalItems = reviews.length;
-  const itemWidth = 260 + 32; // width + gap
+  const itemWidth = 260 + 32;
 
-  // clone awal + akhir
   const cloned = [
-    ...reviews.slice(-1), // E
+    ...reviews.slice(-1),
     ...reviews,
-    ...reviews.slice(0, 1), // A
+    ...reviews.slice(0, 1),
   ];
 
-  // posisi awal scroll
   useEffect(() => {
     const container = containerRef.current;
     if (container) {
@@ -70,10 +73,8 @@ const ReviewSlider = () => {
     setTimeout(() => {
       const maxScroll = itemWidth * totalItems;
       if (container.scrollLeft <= 0) {
-        // Jika di clone pertama, lompat ke asli terakhir
         container.scrollLeft = itemWidth * totalItems;
       } else if (container.scrollLeft >= maxScroll) {
-        // Jika di clone terakhir, lompat ke item pertama
         container.scrollLeft = itemWidth;
       }
       setIsTransitioning(false);
@@ -83,7 +84,6 @@ const ReviewSlider = () => {
   return (
     <section id="review" className="bg-white py-24">
       <div className="max-w-5xl mx-auto">
-        {/* Bungkus semua bagian dalam kotak biru */}
         <div className="bg-cyan-600 text-white rounded-xl p-10">
           <div className="text-center">
             <h2 className="text-3xl font-bold">Kata Klien kami</h2>
@@ -91,7 +91,6 @@ const ReviewSlider = () => {
           </div>
 
           <div className="relative mt-12">
-            {/* Tombol kiri */}
             <button
               onClick={() => handleScroll("left")}
               className="absolute left-0 top-1/2 transform -translate-y-1/2 z-10 bg-white text-cyan-600 hover:bg-cyan-100 rounded-full p-2 shadow-md"
@@ -99,7 +98,6 @@ const ReviewSlider = () => {
               <FaChevronLeft size={20} />
             </button>
 
-            {/* Tombol kanan */}
             <button
               onClick={() => handleScroll("right")}
               className="absolute right-0 top-1/2 transform -translate-y-1/2 z-10 bg-white text-cyan-600 hover:bg-cyan-100 rounded-full p-2 shadow-md"
@@ -107,11 +105,7 @@ const ReviewSlider = () => {
               <FaChevronRight size={20} />
             </button>
 
-            {/* Scroll Container */}
-            <div
-              ref={containerRef}
-              className="overflow-x-hidden scroll-smooth w-full"
-            >
+            <div ref={containerRef} className="overflow-x-hidden scroll-smooth w-full">
               <div
                 className="flex gap-8 snap-x snap-mandatory transition-transform duration-300 ease-in-out"
                 style={{
@@ -121,12 +115,19 @@ const ReviewSlider = () => {
                 {cloned.map((review, index) => (
                   <div
                     key={index}
-                    className="bg-white text-gray-700 rounded-xl shadow-lg w-[200px] sm:w-[260px] h-[150px] p-4 flex flex-col snap-center shrink-0"
+                    className="bg-white text-gray-700 rounded-xl shadow-lg w-[200px] sm:w-[260px] h-[170px] p-4 flex flex-col justify-between snap-center shrink-0"
                   >
                     <div className="flex-1 overflow-hidden">
                       <p className="text-xs italic leading-snug">
                         {review.text}
                       </p>
+                    </div>
+
+                    {/* ⭐ Rating */}
+                    <div className="flex items-center mt-2">
+                      {Array.from({ length: review.rating }, (_, i) => (
+                        <FaStar key={i} className="text-yellow-200 text-xs" />
+                      ))}
                     </div>
 
                     <div className="flex items-center gap-2 mt-2">
@@ -143,9 +144,7 @@ const ReviewSlider = () => {
                         <h4 className="text-cyan-600 font-semibold text-xs">
                           {review.name}
                         </h4>
-                        <p className="text-[10px] text-gray-600">
-                          {review.role}
-                        </p>
+                        <p className="text-[10px] text-gray-600">{review.role}</p>
                       </div>
                     </div>
                   </div>
